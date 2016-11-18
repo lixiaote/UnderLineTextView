@@ -3,7 +3,7 @@ package talon.com.underlinetextview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import talon.com.underline.UnderLineTextView;
+import talon.com.underlineText.UnderLineTextView;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package talon.com.underline;
+package talon.com.underlineText;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,6 @@ import android.graphics.Rect;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
-
-import static android.R.attr.baseline;
 
 /**
  * Created by li.tl on 2016/11/15.

@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     >
 
-<talon.com.underline.UnderLineTextView
+<talon.com.underlineText.UnderLineTextView
     android:id="@+id/tv_underline"
     android:layout_width="match_parent"
     app:underlineWidth="2dp"

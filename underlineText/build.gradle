@@ -21,12 +21,22 @@ android {
     }
 }
 
+//publish {
+//
+//    userOrg = 'lixiaote'//bintray.com用户名
+//    groupId = 'talon.com.underline'//jcenter上的路径
+//    artifactId = 'UnderLineTextView'//项目名称
+//    publishVersion = '1.0.0'//版本号
+//    desc = 'UnderLineTextView'//描述，不重要
+//    website = 'https://github.com/lixiaote/UnderLineTextView'//网站，不重要
+//}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
-    testCompile 'junit:junit:4.12'
 
+
+    apply from: "https://raw.githubusercontent.com/xiaopansky/android-library-publish-to-jcenter/master/bintrayUpload.gradle"
 }
