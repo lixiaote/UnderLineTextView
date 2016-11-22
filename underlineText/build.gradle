@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 23
     buildToolsVersion "24.0.3"
@@ -19,24 +19,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+}
+publish {
+    userOrg = 'xiaote'//bintray.com用户名
+    groupId = 'talon.com'//jcenter上的路径
+    artifactId = 'underlineText'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'a well UnderlineTextView'//描述，不重要
+    website = 'https://github.com/lixiaote/UnderLineTextView'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
 
-//publish {
-//
-//    userOrg = 'lixiaote'//bintray.com用户名
-//    groupId = 'talon.com.underline'//jcenter上的路径
-//    artifactId = 'UnderLineTextView'//项目名称
-//    publishVersion = '1.0.0'//版本号
-//    desc = 'UnderLineTextView'//描述，不重要
-//    website = 'https://github.com/lixiaote/UnderLineTextView'//网站，不重要
-//}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
-
-
-    apply from: "https://raw.githubusercontent.com/xiaopansky/android-library-publish-to-jcenter/master/bintrayUpload.gradle"
+    testCompile 'junit:junit:4.12'
 }
