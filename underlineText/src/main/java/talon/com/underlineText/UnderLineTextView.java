@@ -35,6 +35,7 @@ public class UnderLineTextView extends TextView {
     private void init(Context context, AttributeSet attrs, int defStyleAttr){
           //获取屏幕密度
         density=context.getResources().getDisplayMetrics().density;
+        //获取自定义属性
         TypedArray array=context.obtainStyledAttributes(attrs,R.styleable.UnderlinedTextView,defStyleAttr,0);
         mColor=array.getColor(R.styleable.UnderlinedTextView_underlineColor,0xFFFF0000);
         mStrokeWidth=array.getDimension(R.styleable.UnderlinedTextView_underlineWidth,density*2);
@@ -50,18 +51,24 @@ public class UnderLineTextView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
+        //得到TextView显示有多少行
         int count=getLineCount();
 
+        //得到TextView的布局
         final Layout layout=getLayout();
+
         float x_start,x_stop,x_diff;
         int firstCharInLine, lastCharInLine;
 
         for (int i = 0; i < count; i++) {
+
+            //getLineBounds得到这一行的外包矩形,这个字符的顶部Y坐标就是rect的top 底部Y坐标就是rect的bottom
             int baseline=getLineBounds(i,mRect);
             firstCharInLine=layout.getLineStart(i);
             lastCharInLine = layout.getLineEnd(i);
 
+            //要得到这个字符的左边X坐标 用layout.getPrimaryHorizontal
+            //得到字符的右边X坐标用layout.getSecondaryHorizontal
             x_start = layout.getPrimaryHorizontal(firstCharInLine);
             x_diff = layout.getPrimaryHorizontal(firstCharInLine + 1) - x_start;
             x_stop = layout.getPrimaryHorizontal(lastCharInLine - 1) + x_diff;
