@@ -13,8 +13,9 @@
 <talon.com.underlineText.UnderLineTextView
     android:id="@+id/tv_underline"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/app_string"
     app:underlineWidth="2dp"
     app:underlineColor="@color/colorAccent"
-    android:text="@string/app_string"
-    android:layout_height="wrap_content"/>
+    />
 </RelativeLayout>

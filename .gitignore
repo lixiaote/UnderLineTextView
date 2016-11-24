@@ -7,3 +7,8 @@
 /build
 /captures
 .externalNativeBuild
+gradle.properties
+underlineText/local.properties
+*.xml
+underlineText/project.properties
+*.pro
