@@ -15,6 +15,6 @@
     android:layout_width="match_parent"
     app:underlineWidth="2dp"
     app:underlineColor="@color/colorAccent"
-    android:text="我很好我很好我很好"
+    android:text="@string/app_string"
     android:layout_height="wrap_content"/>
 </RelativeLayout>

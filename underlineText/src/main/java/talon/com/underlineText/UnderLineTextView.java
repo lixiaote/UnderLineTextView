@@ -90,6 +90,11 @@ public class UnderLineTextView extends TextView {
         invalidate();
     }
 
+    @Override
+    public void setPadding(int left, int top, int right, int bottom) {
+        super.setPadding(left, top, right, bottom+(int)mStrokeWidth);
+    }
+
     public float getUnderlineWidth() {
         return mStrokeWidth;
     }
