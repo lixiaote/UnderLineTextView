@@ -20,6 +20,7 @@ public class UnderLineTextView extends TextView {
     private int mColor;
     private float density;
     private float mStrokeWidth;
+    private float mLineTopMargin=0;
 
     public UnderLineTextView(Context context) {
         this(context, null, 0);
@@ -39,7 +40,15 @@ public class UnderLineTextView extends TextView {
         TypedArray array=context.obtainStyledAttributes(attrs,R.styleable.UnderlinedTextView,defStyleAttr,0);
         mColor=array.getColor(R.styleable.UnderlinedTextView_underlineColor,0xFFFF0000);
         mStrokeWidth=array.getDimension(R.styleable.UnderlinedTextView_underlineWidth,density*2);
+        mLineTopMargin=array.getDimension(R.styleable.UnderlinedTextView_underlineTopMargin,density*2);
+
+        setLineSpacing(mLineTopMargin,(float) 1.5);
+        setPadding(getLeft(),getTop(),getRight(),getBottom());
+
         array.recycle();
+
+
+
 
         mRect=new Rect();
         mPaint =new Paint();
@@ -53,9 +62,9 @@ public class UnderLineTextView extends TextView {
     protected void onDraw(Canvas canvas) {
         //得到TextView显示有多少行
         int count=getLineCount();
-
         //得到TextView的布局
         final Layout layout=getLayout();
+
 
         float x_start,x_stop,x_diff;
         int firstCharInLine, lastCharInLine;
@@ -64,6 +73,7 @@ public class UnderLineTextView extends TextView {
 
             //getLineBounds得到这一行的外包矩形,这个字符的顶部Y坐标就是rect的top 底部Y坐标就是rect的bottom
             int baseline=getLineBounds(i,mRect);
+           // mRect.bottom+=mLineTopMargin;
             firstCharInLine=layout.getLineStart(i);
             lastCharInLine = layout.getLineEnd(i);
 
@@ -73,7 +83,9 @@ public class UnderLineTextView extends TextView {
             x_diff = layout.getPrimaryHorizontal(firstCharInLine + 1) - x_start;
             x_stop = layout.getPrimaryHorizontal(lastCharInLine - 1) + x_diff;
 
-            canvas.drawLine(x_start,baseline + mStrokeWidth,x_stop, baseline + mStrokeWidth, mPaint);
+            //canvas.drawLine(x_start,baseline+  mStrokeWidth,x_stop, baseline + mStrokeWidth, mPaint);
+            canvas.drawLine(x_start,baseline+ mLineTopMargin+ mStrokeWidth,x_stop, baseline +mLineTopMargin+ mStrokeWidth, mPaint);
+            //canvas.drawRect(x_start,baseline + mStrokeWidth,x_stop, baseline + mStrokeWidth, mPaint);
 
 
         }
@@ -92,7 +104,7 @@ public class UnderLineTextView extends TextView {
 
     @Override
     public void setPadding(int left, int top, int right, int bottom) {
-        super.setPadding(left, top, right, bottom+(int)mStrokeWidth);
+        super.setPadding(left, top, right, bottom+(int)mLineTopMargin+(int)mStrokeWidth);
     }
 
     public float getUnderlineWidth() {
